@@ -1,5 +1,6 @@
 const express = require("express");
 const MenuModel = require("./db/menu_model");
+const OrderModel = require("./db/order_model")
 const app = express();
 
 const categories = ["Drinks", "Bakery"]
@@ -10,7 +11,23 @@ const items = [
   { name: "Latte", category: "Drink", price: 4.5 },
   { name: "Mocha", category: "Drink", price: 5 },
 ];
-const orders = []
+
+const order1 = {
+  order: [
+    { quantity: 3, item: { name: "Black", category: "Drink", price: 1 } },
+    { quantity: 2, item: { name: "Cappucino", category: "Drink", price: 2.5 } },
+    9
+  ]
+}
+const order2 = {
+  order: [
+    { quantity: 4, item: { name: "Latte", category: "Drink", price: 4.5 } },
+    { quantity: 5, item: { name: "Mocha", category: "Drink", price: 5 } },
+    43,
+  ]
+}
+
+const orders = [order1, order2]
 
 // app.use tells Express to execute some middleware at this stage
 // of the request-response cycle.
@@ -54,6 +71,35 @@ app.delete("/menu/:id", async (req, res) => {
   MenuModel.findByIdAndDelete(req.params.id, () => res.sendStatus(204))
 })
 
-app.get("/orders", (req, res) => res.status.send(orders));
+app.get("/orders", async (req, res) => {
+    const orders = await OrderModel.find();
+    res.send(orders);
+});
+
+app.post("/orders", async (req, res) => {
+  const newOrder = await OrderModel.create(req.body)
+  res.status(201).send(newOrder)
+})
+
+app.get("/orders/:id", async (req, res) => {
+  let order = await OrderModel.findById(req.params.id);
+
+  order["order"].forEach(async (value, index) => {
+      // let item = 
+      order["order"][index]["item"] = await MenuModel.findById(
+        order["order"][index]["item"]
+      )
+    })
+
+  order["order"][0]["item"] = await MenuModel.findById(
+    order["order"][0]["item"]
+  );
+  // fix this later for async update
+  res.send(order)
+});
+
+app.delete("/orders/:id", async (req, res) => {
+  OrderModel.findByIdAndDelete(req.params.id, () => res.sendStatus(204));
+});
 
 module.exports = app;
