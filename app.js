@@ -72,9 +72,16 @@ app.delete("/menu/:id", async (req, res) => {
 })
 
 app.get("/orders", async (req, res) => {
-    const orders = await OrderModel.find();
+  const orders = await OrderModel.find();
+  orders.forEach( (order, index) => {
+    order["order"].forEach(async (value, index) => {
+      order["order"][index]["item"] = await MenuModel.findById(order["order"][index]["item"]);
+    });
+  } )
+
+  orders[0]["order"][0]["item"] = await MenuModel.findById(orders[0]["order"][0]["item"]);
     res.send(orders);
-});
+  })
 
 app.post("/orders", async (req, res) => {
   const newOrder = await OrderModel.create(req.body)

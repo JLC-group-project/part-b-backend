@@ -14,6 +14,12 @@ const OrderModel = mongoose.model(
           ref: 'Menu',
           required: true,
         },
+        customisation: {
+          milk: String,
+          ice: Boolean,
+          sugar: Number,
+          size: String
+        }
       },
     ],
     price: {
