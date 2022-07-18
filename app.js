@@ -3,6 +3,9 @@ const MenuModel = require("./db/menu_model");
 const OrderModel = require("./db/order_model")
 const app = express();
 
+const cors = require("cors")
+app.use(cors())
+
 const categories = ["Drinks", "Bakery"]
 const items = [
   { name: "Black", category: "Drink", price: 1 },
