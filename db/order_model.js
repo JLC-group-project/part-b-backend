@@ -3,7 +3,7 @@ const mongoose = require("./connection");
 const OrderModel = mongoose.model(
   "Order",
   new mongoose.Schema({
-    order: [
+    orders: [
       {
         quantity: {
           type: Number,
@@ -11,19 +11,23 @@ const OrderModel = mongoose.model(
         },
         item: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'Menu',
+          ref: "Menu",
           required: true,
         },
         customisation: {
           milk: String,
           ice: Boolean,
           sugar: Number,
-          size: String
-        }
+          size: String,
+        },
       },
     ],
     price: {
       type: Number,
+      required: true,
+    },
+    complete: {
+      type: Boolean,
       required: true,
     },
   })
