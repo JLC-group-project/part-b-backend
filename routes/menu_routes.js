@@ -13,18 +13,28 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const item = {
-    name: req.body.name,
-    category: req.body.category,
-    price: req.body.price,
-  };
-  const newItem = await MenuModel.create(item);
+  // const item = {
+  //   name: req.body.name,
+  //   category: req.body.category,
+  //   price: req.body.price,
+  // };
+  // const newItem = await MenuModel.create(item);
+  
+  const newItem = await MenuModel.create(req.body);
   res.status(201).send(newItem);
 });
 
-router.put("/:id", async (req, res) => {
+// router.put("/:id", async (req, res) => {
+//   res.send(
+//     await MenuModel.findByIdAndUpdate(req.params.id, req.body, {
+//       returnDocument: "after",
+//     })
+//   );
+// });
+
+router.put("/:name", async (req, res) => {
   res.send(
-    await MenuModel.findByIdAndUpdate(req.params.id, req.body, {
+    await MenuModel.findOneAndUpdate({ name: req.params.name }, req.body, {
       returnDocument: "after",
     })
   );
