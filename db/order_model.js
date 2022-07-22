@@ -16,13 +16,13 @@ const OrderModel = mongoose.model(
         },
         customisation: {
           milk: String,
-          ice: Boolean,
-          sugar: Number,
+          ice: String,
+          sugar: String,
           size: String,
         },
       },
     ],
-    price: {
+    total_price: {
       type: Number,
       required: true,
     },

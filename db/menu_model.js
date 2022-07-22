@@ -14,6 +14,10 @@ const MenuModel = mongoose.model(
     price: {
       type: String,
       required: true
+    },
+    image_url: {
+      type: String,
+      required: true
     }
   })
 );
