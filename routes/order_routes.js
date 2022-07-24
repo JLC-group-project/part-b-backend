@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
   for (order of orders) {
     for (o of order["orders"]) {
       // console.log(`Order: ${o["item"]}`)
-      o["item"] = await MenuModel.findById(o["item"])
+      // o["item"] = await MenuModel.findById(o["item"])
       // OrderModel.findById(order).populate()
     }
   //   order["order"][index]["item"] = await MenuModel.findById(
@@ -51,7 +51,7 @@ router.get("/:id", async (req, res) => {
 
     for (o of order["orders"]) {
       // console.log(`Order: ${o["item"]}`)
-      o["item"] = await MenuModel.findById(o["item"])
+      // o["item"] = await MenuModel.findById(o["item"])
     }
   res.send(order);
 });

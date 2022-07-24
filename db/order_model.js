@@ -10,8 +10,13 @@ const OrderModel = mongoose.model(
           required: true,
         },
         item: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Menu",
+          type: {
+            _id: String,
+            category: String,
+            name: String,
+            price: String,
+            image_url: String,
+          },
           required: true,
         },
         customisation: {
