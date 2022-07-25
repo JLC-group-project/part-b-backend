@@ -15,16 +15,16 @@ router.get("/", async (req, res) => {
   //   })
   // })
 
-  for (order of orders) {
-    for (o of order["orders"]) {
+  // for (order of orders) {
+  //   for (o of order["orders"]) {
       // console.log(`Order: ${o["item"]}`)
       // o["item"] = await MenuModel.findById(o["item"])
       // OrderModel.findById(order).populate()
-    }
+    // }
   //   order["order"][index]["item"] = await MenuModel.findById(
   //     order["order"][index]["item"]
   //   );
-  }
+  // }
 
   // bar.then(() => {
   //   res.send(orders);
@@ -49,10 +49,10 @@ router.get("/:id", async (req, res) => {
   // );
   // fix this later for async update
 
-    for (o of order["orders"]) {
+    // for (o of order["orders"]) {
       // console.log(`Order: ${o["item"]}`)
       // o["item"] = await MenuModel.findById(o["item"])
-    }
+    // }
   res.send(order);
 });
       
