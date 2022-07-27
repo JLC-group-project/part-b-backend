@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 
+// Create a connection to Mongoose
 mongoose
   .connect(process.env.ATLAS_DB_URL)
   .then(() =>

@@ -1,5 +1,4 @@
 const express = require("express");
-
 const app = express();
 
 // app.use tells Express to execute some middleware at this stage
@@ -10,9 +9,11 @@ const app = express();
 // We do this before any routes, in case a route needs req.body
 app.use(express.json())
 
+// Enables Cross-Origin Resource Sharing
 const cors = require("cors");
 app.use(cors());
 
+// Rerouted all api routes to begin with "/api/v1"
 const apiV1Routes = require("./routes");
 app.use("/api/v1", apiV1Routes);
 
