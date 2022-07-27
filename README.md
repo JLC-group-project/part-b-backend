@@ -1,6 +1,15 @@
 ## Coder Cafe API
 
-Retrieving Atlas DB URL
+### Frontend Git Url
+https://github.com/JLC-group-project/part-b-front-end
+
+### Backend Git Url
+https://github.com/JLC-group-project/part-b-backend
+
+### Deployed URL
+https://coderscafe.herokuapp.com/
+
+### Retrieving Atlas DB URL
 1. Create MongoDB account
 2. Create a Cluster
 3. Click on QuickStart
@@ -13,7 +22,7 @@ Retrieving Atlas DB URL
 10. Copy "mongodb+srv://testadmin:<password>@cluster0.rmtgtp9.mongodb.net/<CollectionName>?retryWrites=true&w=majority"
 11. Paste in .env file after "ATLAS_DB_URL="
 
-## Running Backend API
+### Running Backend API
 npm start
 
 OR 
